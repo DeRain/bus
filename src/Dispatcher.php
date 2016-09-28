@@ -193,7 +193,7 @@ class Dispatcher implements DispatcherContract, QueueingDispatcher, HandlerResol
      *
      * @return mixed
      */
-    public function dispatchNow($command, Closure $handler = null)
+    public function dispatchNow($command, $handler = null)
     {
         return $this->pipeline->send($command)->through($this->pipes)->then(function ($command) use ($handler) {
             if ($command instanceof SelfHandling) {
